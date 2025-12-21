@@ -14,7 +14,7 @@ export const weddingConfig = {
     title: 'Save The Date',
     video: null, // Set to null since we are using an image
     image: '/assets/hero/hero.jpg', // Main hero image
-    namesImage: '/assets/hero/names.png', // The names PNG
+    namesImage: '/assets/hero/name.png', // The names PNG
   },
   driveLink: '#', // Replace with your actual Google Drive link
   contacts: [

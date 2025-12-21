@@ -63,49 +63,15 @@ export default async function Home() {
     <main className="min-h-screen bg-stone-50 text-stone-800 font-sans selection:bg-rose-200">
       
       {/* HERO SECTION */}
-      <section className="relative w-full bg-stone-100 overflow-hidden">
-        {/* Top Content: Names & Date */}
-        <div className="py-12 md:py-20 text-center space-y-8 px-4 z-10 relative">
-            <h2 className="text-sm md:text-base tracking-[0.3em] uppercase text-stone-500 animate-fade-in-up">{heroTitle}</h2>
-            
-            <div className="flex justify-center animate-fade-in-up delay-100">
-                {namesImage ? (
-                    <Image 
-                        src={namesImage} 
-                        alt={`${groom} & ${bride}`} 
-                        width={600} 
-                        height={300}
-                        className="w-full max-w-md h-auto"
-                        priority
-                    />
-                ) : (
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800">
-                        {groom} <span className="text-rose-400">&</span> {bride}
-                    </h1>
-                )}
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-base md:text-lg font-medium tracking-wide text-stone-600 animate-fade-in-up delay-200">
-                <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-rose-400" />
-                    <span>{format(date, 'EEEE, MMMM do, yyyy')}</span>
-                </div>
-                <div className="hidden md:block text-stone-300">•</div>
-                <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-rose-400" />
-                    <span>{format(date, 'HH:mm')}</span>
-                </div>
-            </div>
-        </div>
-
-        {/* Hero Image */}
-        <div className="w-full h-[50vh] md:h-[70vh] relative">
+      <section className="relative h-screen w-full overflow-hidden flex flex-col justify-end">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
             {heroImage ? (
                  <Image
                     src={heroImage}
                     alt="Wedding Hero"
                     fill
-                    className="object-cover object-top"
+                    className="object-cover"
                     priority
                     sizes="100vw"
                  />
@@ -115,8 +81,43 @@ export default async function Home() {
                 </div>
             )}
             
-            {/* Gradient Overlay for smooth transition */}
-            <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-stone-100 to-transparent pointer-events-none" />
+            {/* Gradient Overlay: Fade from top (for text visibility) and bottom (for transition) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-stone-50/90 via-transparent to-stone-50/20" />
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-stone-50 to-transparent" />
+        </div>
+
+        {/* Content - Positioned at Top Center */}
+        <div className="absolute top-0 left-0 w-full pt-16 md:pt-24 pb-12 text-center space-y-8 px-4 z-10 animate-fade-in-up">
+            <h2 className="text-sm md:text-base tracking-[0.3em] uppercase text-stone-600">{heroTitle}</h2>
+            
+            <div className="flex justify-center">
+                {namesImage ? (
+                    <Image 
+                        src={namesImage} 
+                        alt={`${groom} & ${bride}`} 
+                        width={600} 
+                        height={300}
+                        className="w-full max-w-lg h-auto drop-shadow-sm"
+                        priority
+                    />
+                ) : (
+                    <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800">
+                        {groom} <span className="text-rose-400">&</span> {bride}
+                    </h1>
+                )}
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-base md:text-lg font-medium tracking-wide text-stone-700">
+                <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-rose-500" />
+                    <span>{format(date, 'EEEE, MMMM do, yyyy')}</span>
+                </div>
+                <div className="hidden md:block text-stone-400">•</div>
+                <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-rose-500" />
+                    <span>{format(date, 'HH:mm')}</span>
+                </div>
+            </div>
         </div>
       </section>
 
