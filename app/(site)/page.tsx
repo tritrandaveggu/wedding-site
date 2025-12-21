@@ -39,6 +39,9 @@ export default async function Home() {
   const repoName = 'wedding-site'; // Must match next.config.mjs
   const basePath = isProd ? `/${repoName}` : '';
 
+  // Prepend basePath to images if necessary
+  const galleryImages = allImages.map(img => `${basePath}${img}`);
+
   // Defaults
   const groom = wedding.couple.groom;
   const bride = wedding.couple.bride;
