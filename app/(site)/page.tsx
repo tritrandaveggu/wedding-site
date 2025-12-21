@@ -35,9 +35,10 @@ export default async function Home() {
   const allImages = getGalleryImages();
 
   // Base path for production
-  const isProd = process.env.NODE_ENV === 'production';
-  const repoName = 'wedding-site'; // Must match next.config.mjs
-  const basePath = isProd ? `/${repoName}` : '';
+  // Since we are using a custom domain or root deployment, we don't need a path prefix.
+  // If deploying to a subdirectory (e.g. GitHub Pages project site without custom domain),
+  // you might need to configure basePath in next.config.mjs and here.
+  const basePath = '';
 
   // Prepend basePath to images if necessary
   const galleryImages = allImages.map(img => `${basePath}${img}`);
