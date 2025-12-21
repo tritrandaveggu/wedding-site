@@ -214,7 +214,6 @@ export default async function Home() {
                             <div key={idx} className="text-center">
                                 <p className="font-semibold text-stone-800">{contact.name}</p>
                                 <p className="text-sm text-stone-500">{contact.role}</p>
-                                <a href={`tel:${contact.phone}`} className="text-rose-500 hover:underline">{contact.phone}</a>
                             </div>
                         ))}
                     </div>
