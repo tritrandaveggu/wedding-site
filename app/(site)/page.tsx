@@ -55,6 +55,7 @@ export default async function Home() {
 
   const heroTitle = wedding.hero.title;
   const heroImage = wedding.hero.image;
+  const heroVideo = wedding.hero.video;
   const namesImage = wedding.hero.namesImage;
   const driveLink = wedding.driveLink;
   const contacts = wedding.contacts;
@@ -64,9 +65,22 @@ export default async function Home() {
       
       {/* HERO SECTION */}
       <section className="relative h-screen w-full overflow-hidden flex flex-col justify-end">
-        {/* Background Image */}
+        {/* Background Video or Image */}
         <div className="absolute inset-0 z-0">
-            {heroImage ? (
+            {heroVideo ? (
+                <video 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    poster={heroImage || undefined}
+                    className="object-cover w-full h-full"
+                >
+                    <source src={`${basePath}${heroVideo}`} type="video/mp4" />
+                    {/* Fallback to image if video fails or not supported */}
+                    {heroImage && <img src={`${basePath}${heroImage}`} alt="Hero" className="object-cover w-full h-full" />}
+                </video>
+            ) : heroImage ? (
                  <Image
                     src={heroImage}
                     alt="Wedding Hero"
