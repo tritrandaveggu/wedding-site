@@ -54,6 +54,8 @@ export default async function Home() {
   const mapEmbed = wedding.venue.mapEmbedUrl;
 
   const heroTitle = wedding.hero.title;
+  const heroImage = wedding.hero.image;
+  const namesImage = wedding.hero.namesImage;
   const driveLink = wedding.driveLink;
   const contacts = wedding.contacts;
 
@@ -61,49 +63,60 @@ export default async function Home() {
     <main className="min-h-screen bg-stone-50 text-stone-800 font-sans selection:bg-rose-200">
       
       {/* HERO SECTION */}
-      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center text-white">
-        {/* Background Video or Image */}
-        <div className="absolute inset-0 z-0 bg-black/40">
-            {wedding?.hero.video ? (
-                <video 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
-                    poster={wedding.hero.poster || undefined}
-                    className="object-cover w-full h-full opacity-60"
-                >
-                    <source src={`${basePath}${wedding.hero.video}`} type="video/mp4" />
-                </video>
-            ) : (
-                <div className="w-full h-full bg-stone-900 flex items-center justify-center">
-                    <span className="text-stone-500">Video Placeholder</span>
-                </div>
-            )}
-        </div>
+      <section className="relative w-full bg-stone-100 overflow-hidden">
+        {/* Top Content: Names & Date */}
+        <div className="py-12 md:py-20 text-center space-y-8 px-4 z-10 relative">
+            <h2 className="text-sm md:text-base tracking-[0.3em] uppercase text-stone-500 animate-fade-in-up">{heroTitle}</h2>
+            
+            <div className="flex justify-center animate-fade-in-up delay-100">
+                {namesImage ? (
+                    <Image 
+                        src={namesImage} 
+                        alt={`${groom} & ${bride}`} 
+                        width={600} 
+                        height={300}
+                        className="w-full max-w-md h-auto"
+                        priority
+                    />
+                ) : (
+                    <h1 className="text-5xl md:text-7xl font-serif font-bold text-stone-800">
+                        {groom} <span className="text-rose-400">&</span> {bride}
+                    </h1>
+                )}
+            </div>
 
-        {/* Content */}
-        <div className="relative z-10 text-center space-y-6 px-4 animate-fade-in-up">
-            <h2 className="text-xl md:text-2xl tracking-[0.2em] uppercase text-rose-100">{heroTitle}</h2>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold drop-shadow-lg">
-                {groom} <span className="text-rose-300">&</span> {bride}
-            </h1>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-lg md:text-xl font-medium tracking-wide">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-base md:text-lg font-medium tracking-wide text-stone-600 animate-fade-in-up delay-200">
                 <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-rose-300" />
+                    <Calendar className="w-5 h-5 text-rose-400" />
                     <span>{format(date, 'EEEE, MMMM do, yyyy')}</span>
                 </div>
-                <div className="hidden md:block text-rose-300">•</div>
+                <div className="hidden md:block text-stone-300">•</div>
                 <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-rose-300" />
+                    <Clock className="w-5 h-5 text-rose-400" />
                     <span>{format(date, 'HH:mm')}</span>
                 </div>
             </div>
-             <div className="mt-8">
-                <a href="#event-details" className="inline-block px-8 py-3 border border-white/50 hover:bg-white hover:text-stone-900 transition-all rounded-full backdrop-blur-sm">
-                    View Details
-                </a>
-            </div>
+        </div>
+
+        {/* Hero Image */}
+        <div className="w-full h-[50vh] md:h-[70vh] relative">
+            {heroImage ? (
+                 <Image
+                    src={heroImage}
+                    alt="Wedding Hero"
+                    fill
+                    className="object-cover object-top"
+                    priority
+                    sizes="100vw"
+                 />
+            ) : (
+                <div className="w-full h-full bg-stone-200 flex items-center justify-center">
+                    <span className="text-stone-400">No Hero Image</span>
+                </div>
+            )}
+            
+            {/* Gradient Overlay for smooth transition */}
+            <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-stone-100 to-transparent pointer-events-none" />
         </div>
       </section>
 

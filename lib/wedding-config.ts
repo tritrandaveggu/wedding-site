@@ -12,8 +12,9 @@ export const weddingConfig = {
   },
   hero: {
     title: 'Save The Date',
-    video: '/assets/hero/hero-video.mp4', // Place your video at public/assets/hero/hero-video.mp4
-    poster: '/assets/hero/poster.jpg',     // Optional: Place a cover image at public/assets/hero/poster.jpg
+    video: null, // Set to null since we are using an image
+    image: '/assets/hero/hero.jpg', // Main hero image
+    namesImage: '/assets/hero/names.png', // The names PNG
   },
   driveLink: '#', // Replace with your actual Google Drive link
   contacts: [
