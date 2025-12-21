@@ -169,7 +169,7 @@ export default async function Home() {
                 <p className="text-stone-500">A glimpse into our journey</p>
             </div>
 
-            <GalleryGrid images={galleryImages} />
+            <GalleryGrid images={allImages} />
         </div>
       </section>
 
