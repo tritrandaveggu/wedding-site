@@ -107,14 +107,14 @@ export default async function Home() {
                 )}
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-base md:text-lg font-medium tracking-wide text-stone-700">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 text-base md:text-lg font-medium tracking-wide text-white">
                 <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-rose-500" />
+                    <Calendar className="w-5 h-5 text-white" />
                     <span>{format(date, 'EEEE, MMMM do, yyyy')}</span>
                 </div>
-                <div className="hidden md:block text-stone-400">•</div>
+                <div className="hidden md:block text-white/70">•</div>
                 <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-rose-500" />
+                    <Clock className="w-5 h-5 text-white" />
                     <span>{format(date, 'HH:mm')}</span>
                 </div>
             </div>
@@ -138,7 +138,6 @@ export default async function Home() {
                 </div>
                 <h3 className="text-xl font-semibold">Time</h3>
                 <p className="text-lg text-stone-700">{format(date, 'HH:mm')}</p>
-                <p className="text-sm text-stone-500">Please arrive 15 minutes early</p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 space-y-4 hover:shadow-md transition-shadow">
@@ -206,7 +205,10 @@ export default async function Home() {
 
             {contacts.length > 0 && (
                 <div className="pt-12 border-t border-stone-100 mt-12">
-                    <h3 className="text-sm uppercase tracking-widest text-stone-400 mb-6">Contacts</h3>
+                    <h3 className="text-sm uppercase tracking-widest text-stone-400 mb-6">Assistance on the Day</h3>
+                    <p className="text-stone-500 text-sm mb-8 max-w-2xl mx-auto">
+                        Our wedding coordinator will be on-site to assist you upon arrival. Should you have any questions or cannot locate them, please feel free to contact Phuoc Tri or Kim Ngan directly.
+                    </p>
                     <div className="flex flex-wrap justify-center gap-8">
                         {contacts.map((contact, idx) => (
                             <div key={idx} className="text-center">
