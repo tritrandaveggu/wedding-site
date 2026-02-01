@@ -16,7 +16,7 @@ export const weddingConfig = {
     image: '/assets/hero/hero.jpg', // Main hero image (used as poster/fallback)
     namesImage: '/assets/hero/name.png', // The names PNG
   },
-  driveLink: '#', // Replace with your actual Google Drive link
+  driveLink: 'https://photos.app.goo.gl/uvyJUGboigajtukZ7', // Replace with your actual Google Drive link
   contacts: [
     { name: 'Phuoc Tri', phone: '0909000000', role: 'Groom' },
     { name: 'Kim Ngan', phone: '0909000000', role: 'Bride' },
